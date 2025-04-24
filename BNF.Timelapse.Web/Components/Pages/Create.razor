@@ -1,0 +1,31 @@
+﻿@page "/create"
+
+@rendermode InteractiveServer
+
+<h3>Create</h3>
+
+
+<h2>Timelapse</h2>
+<hr />
+@if (_duplicateName)
+{
+    <div class="alert alert-danger">Duplicate name! Please pick another name.</div>
+}
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="Timelapse" OnValidSubmit="AddTimelapse" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert" />
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <InputText id="name" @bind-Value="Timelapse.Name" class="form-control" @oninput="() => _duplicateName=false" />
+                <ValidationMessage For="() => Timelapse.Name" class="text-danger" />
+            </div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/">Back to List</a>
+</div>

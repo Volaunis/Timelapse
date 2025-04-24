@@ -1,0 +1,36 @@
+﻿@page "/"
+
+@using Microsoft.AspNetCore.Components.QuickGrid
+
+@rendermode InteractiveServer
+
+<PageTitle>Timelapses</PageTitle>
+
+<h1>Timelapses</h1>
+
+@if (_timelapses?.Any(x => x.Running) != true)
+{
+    <p>
+        @* ReSharper disable once Html.PathError *@
+        <a href="/create" class="btn btn-success">Start new timelapse</a>
+    </p>
+}
+
+<QuickGrid Class="table" Items="_timelapses">
+    <PropertyColumn Property="timelapse => timelapse.Id"></PropertyColumn>
+    <PropertyColumn Property="timelapse => timelapse.Name"></PropertyColumn>
+    <PropertyColumn Property="timelapse => timelapse.Created" Format="yyyy-MM-dd"></PropertyColumn>
+    <PropertyColumn Property="timelapse => timelapse.Started" Format="yyyy-MM-dd"></PropertyColumn>
+    <PropertyColumn Property="timelapse => timelapse.Stopped" Format="yyyy-MM-dd"></PropertyColumn>
+    
+    <TemplateColumn Context="timelapse">
+        @if(timelapse.Running)
+        {
+                <a class="btn btn-danger btn-sm" @onclick="() => StopTimelapse(timelapse)">Stop timelapse</a>
+        }
+        else
+        {
+            <div>Finished</div>
+        }
+    </TemplateColumn>
+</QuickGrid>

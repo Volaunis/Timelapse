@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BNF.Timelapse.Web", "BNF.Timelapse.Web\BNF.Timelapse.Web.csproj", "{CC39700B-EF90-4893-9CDF-8F24CD7BEC5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BNF.Timelapse.Repositories", "BNF.Timelapse.Repositories\BNF.Timelapse.Repositories.csproj", "{87DEBE0F-ECBB-4F21-BECF-AF0A70814B45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BNF.Timelapse.Models", "BNF.Timelapse.Models\BNF.Timelapse.Models.csproj", "{924DED67-5C22-4513-B68D-D91A889B7D17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BNF.Timelapse.BackendService", "BNF.Timelapse.BackendService\BNF.Timelapse.BackendService.csproj", "{CBF3AE91-B21A-4466-92CB-46E64A0F1A85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC39700B-EF90-4893-9CDF-8F24CD7BEC5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC39700B-EF90-4893-9CDF-8F24CD7BEC5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC39700B-EF90-4893-9CDF-8F24CD7BEC5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC39700B-EF90-4893-9CDF-8F24CD7BEC5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87DEBE0F-ECBB-4F21-BECF-AF0A70814B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87DEBE0F-ECBB-4F21-BECF-AF0A70814B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87DEBE0F-ECBB-4F21-BECF-AF0A70814B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87DEBE0F-ECBB-4F21-BECF-AF0A70814B45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{924DED67-5C22-4513-B68D-D91A889B7D17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{924DED67-5C22-4513-B68D-D91A889B7D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{924DED67-5C22-4513-B68D-D91A889B7D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{924DED67-5C22-4513-B68D-D91A889B7D17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBF3AE91-B21A-4466-92CB-46E64A0F1A85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBF3AE91-B21A-4466-92CB-46E64A0F1A85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBF3AE91-B21A-4466-92CB-46E64A0F1A85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBF3AE91-B21A-4466-92CB-46E64A0F1A85}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D9ED3F4-C3A9-491F-A631-9F6E14E4C987}
+	EndGlobalSection
+EndGlobal
