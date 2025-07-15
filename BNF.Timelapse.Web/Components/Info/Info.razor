@@ -1,0 +1,14 @@
+﻿@page "/info"
+
+@using Microsoft.AspNetCore.Components.QuickGrid
+
+@rendermode InteractiveServer
+
+<h3>Info</h3>
+
+<QuickGrid Class="table" ItemsProvider="@_driveListProvider">
+    <PropertyColumn Property="x => x.Drive" Title="Drive"></PropertyColumn>
+    <PropertyColumn Property="x => x.FreeSpace" Title="Free space"></PropertyColumn>
+</QuickGrid>
+
+

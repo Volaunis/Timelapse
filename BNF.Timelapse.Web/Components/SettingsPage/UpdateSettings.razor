@@ -1,0 +1,38 @@
+﻿@page "/settings"
+@using BNF.Timelapse.Models.Enums
+@using BNF.Timelapse.Models.Extensions
+
+@rendermode InteractiveServer
+
+<h3>Settings</h3>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="Settings" OnValidSubmit="UpdateSettingsAction" FormName="update" Enhance>
+            <div class="mb-3">
+                <label for="resolution" class="form-label">Resolution:</label>
+                <InputSelect id="resolution" @bind-Value="Settings.Resolution" class="form-control">
+                    @foreach (Resolution resolution in Enum.GetValues(typeof(Resolution)))
+                    {
+                        <option value="@resolution">@resolution.GetResolutionDisplay()</option>
+                    }
+                </InputSelect>
+                <label for="cameraType" class="form-label">Camera Type:</label>
+                <InputSelect id="cameraType" @bind-Value="Settings.CameraType" class="form-control">
+                    @foreach (CameraType cameraType in Enum.GetValues(typeof(CameraType)))
+                    {
+                        <option value="@cameraType">@cameraType.GetCameraDisplay()</option>
+                    }
+                </InputSelect>
+                <label for="path" class="form-label">Path:</label>
+                <InputText id="path" @bind-Value="Settings.Path" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/">Back to List</a>
+</div>

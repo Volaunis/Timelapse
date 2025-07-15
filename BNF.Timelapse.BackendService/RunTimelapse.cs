@@ -6,45 +6,64 @@ namespace BNF.Timelapse.BackendService;
 public class RunTimelapse : BackgroundService
 {
     private readonly ITimelapseDbRepository _timelapseDbRepository;
+    private readonly ISnapshotRepository _snapshotRepository;
     private readonly Timer _timer;
     private bool _timerActive;
     private Models.Timelapse? _activeTimelapse;
 
 
-    public RunTimelapse(ITimelapseDbRepository timelapseDbRepository)
+    public RunTimelapse(ITimelapseDbRepository timelapseDbRepository, ISnapshotRepository snapshotRepository)
     {
         _timelapseDbRepository = timelapseDbRepository;
+        _snapshotRepository = snapshotRepository;
         _timer = new Timer(DoWork, null, Timeout.Infinite, Timeout.Infinite);
     }
 
     private void DoWork(object? state)
     {
-        var x = _activeTimelapse;
+        var activeTimelapse = _activeTimelapse;
+
+        if (activeTimelapse == null)
+            return;
+
+
+        _timelapseDbRepository.IncreaseIndex(activeTimelapse);
+        _snapshotRepository.TakeSnapshot(_activeTimelapse);
     }
 
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        while (stoppingToken.IsCancellationRequested == false)
+        try
         {
-            var activeTimelapse = await _timelapseDbRepository.GetActiveTimelapseAsync();
-
-            if (activeTimelapse == null && _timerActive)
-                StopTimer();
-
-            if (activeTimelapse != null && _timerActive == false)
+            while (stoppingToken.IsCancellationRequested == false)
             {
-                if (_activeTimelapse?.Id == activeTimelapse.Id)
-                    _activeTimelapse = activeTimelapse;
+                var activeTimelapse = await _timelapseDbRepository.GetActiveTimelapseAsync();
 
-                if (_timerActive == false)
-                    StartTimer();
+                if (activeTimelapse == null && _timerActive)
+                {
+                    StopTimer();
+                    _activeTimelapse = null;
+                }
+
+                if (activeTimelapse != null && _timerActive == false)
+                {
+                    if (_activeTimelapse?.Id != activeTimelapse.Id)
+                        _activeTimelapse = activeTimelapse;
+
+                    if (_timerActive == false)
+                        StartTimer();
+                }
+
+                await Task.Delay(1000, stoppingToken);
             }
 
-            await Task.Delay(1000, stoppingToken);
+            StopTimer();
         }
-
-        StopTimer();
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 
     private void StartTimer()

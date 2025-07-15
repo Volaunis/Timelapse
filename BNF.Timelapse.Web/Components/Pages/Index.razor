@@ -17,20 +17,27 @@
 }
 
 <QuickGrid Class="table" Items="_timelapses">
-    <PropertyColumn Property="timelapse => timelapse.Id"></PropertyColumn>
     <PropertyColumn Property="timelapse => timelapse.Name"></PropertyColumn>
     <PropertyColumn Property="timelapse => timelapse.Created" Format="yyyy-MM-dd"></PropertyColumn>
     <PropertyColumn Property="timelapse => timelapse.Started" Format="yyyy-MM-dd"></PropertyColumn>
     <PropertyColumn Property="timelapse => timelapse.Stopped" Format="yyyy-MM-dd"></PropertyColumn>
-    
+    <PropertyColumn Property="timelapse => timelapse.Index" Title="Number of images"></PropertyColumn>
+
     <TemplateColumn Context="timelapse">
         @if(timelapse.Running)
         {
-                <a class="btn btn-danger btn-sm" @onclick="() => StopTimelapse(timelapse)">Stop timelapse</a>
+            <a class="btn btn-danger btn-sm" @onclick="() => StopTimelapse(timelapse)">Stop timelapse</a>
         }
         else
         {
             <div>Finished</div>
+        }
+        
+        @if(timelapse.Index>0) 
+        {
+            <div>
+                <a href="/image/@timelapse.Id">Latest snapshot</a>
+            </div>
         }
     </TemplateColumn>
 </QuickGrid>
