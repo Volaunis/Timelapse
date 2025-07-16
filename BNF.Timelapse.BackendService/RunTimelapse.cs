@@ -26,9 +26,11 @@ public class RunTimelapse : BackgroundService
         if (activeTimelapse == null)
             return;
 
+        activeTimelapse.Index++;
 
-        _timelapseDbRepository.IncreaseIndex(activeTimelapse);
         _snapshotRepository.TakeSnapshot(_activeTimelapse);
+
+        _timelapseDbRepository.UpdateIndex(activeTimelapse);
     }
 
 

@@ -14,7 +14,7 @@ public interface ITimelapseDbRepository
     Models.Timelapse? GetTimelapseById(ObjectId objectId);
     Models.Timelapse? GetTimelapseByName(string? name);
     Models.Timelapse? GetActiveTimelapse();
-    void IncreaseIndex(Models.Timelapse activeTimelapse);
+    void UpdateIndex(Models.Timelapse activeTimelapse);
 }
 
 public class TimelapseDbRepository : ITimelapseDbRepository
@@ -67,10 +67,8 @@ public class TimelapseDbRepository : ITimelapseDbRepository
         return _mongoDbService.GetList<Models.Timelapse>(x => x.Running).SingleOrDefault();
     }
 
-    public void IncreaseIndex(Models.Timelapse activeTimelapse)
+    public void UpdateIndex(Models.Timelapse activeTimelapse)
     {
-        activeTimelapse.Index++;
-
         var updateFields = new Dictionary<Expression<Func<Models.Timelapse, object>>, object>
         {
             { x => x.Index, activeTimelapse.Index }
