@@ -40,6 +40,14 @@ public class RunTimelapse : BackgroundService
         {
             while (stoppingToken.IsCancellationRequested == false)
             {
+                var beforeVideoTimelapse = await _timelapseDbRepository.GetBeforeTimelapseAsync();
+
+                if (beforeVideoTimelapse != null)
+                {
+                    _snapshotRepository.CreateVideo(beforeVideoTimelapse);
+                    _timelapseDbRepository.FinalizeTimelapse(beforeVideoTimelapse);
+                }
+
                 var activeTimelapse = await _timelapseDbRepository.GetActiveTimelapseAsync();
 
                 if (activeTimelapse == null && _timerActive)

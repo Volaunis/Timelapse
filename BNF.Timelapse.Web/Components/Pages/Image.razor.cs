@@ -30,7 +30,7 @@ public partial class Image
 
         var baseDirectory = Path.Join(settings.Path, timelapse.BaseName);
 
-        var filename = Path.Join(baseDirectory, $"{timelapse.Index - 1:000000}.jpg");
+        var filename = Path.Join(baseDirectory, $"{timelapse.Index:000000}.jpg");
 
         var imageStream = File.OpenRead(filename);
 

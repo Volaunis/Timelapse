@@ -1,5 +1,5 @@
-﻿using System.Diagnostics;
-using BNF.Timelapse.Models.Extensions;
+﻿using BNF.Timelapse.Models.Extensions;
+using System.Diagnostics;
 
 namespace BNF.Timelapse.Repositories.Repositories;
 
@@ -7,6 +7,7 @@ public interface ISnapshotRepository
 {
     void TakeSnapshot(Models.Timelapse? timelapse);
     void CreateVideo(Models.Timelapse timelapse);
+    (Stream stream, string filename) GetVideo(Models.Timelapse timelapse);
 }
 
 public class SnapshotRepository : ISnapshotRepository
@@ -25,8 +26,6 @@ public class SnapshotRepository : ISnapshotRepository
         if (timelapse == null)
             return;
 
-        var process = new Process();
-
         var baseDirectory = Path.Join(settings.Path, timelapse.BaseName);
 
         if (Directory.Exists(baseDirectory) == false)
@@ -43,17 +42,15 @@ public class SnapshotRepository : ISnapshotRepository
 
         Console.WriteLine($"Saving {filename}");
 
+        var process = new Process();
         process.StartInfo.FileName = "fswebcam";
-
         process.StartInfo.Arguments = $"--delay 1 --resolution {settings.Resolution.GetResolutionString()} --no-banner --frames 1 --jpeg 50 --device /dev/video0 {filename}";
+        process.StartInfo.RedirectStandardError = true;
+        process.Start();
+        process.WaitForExit();
 
         //process.StartInfo.Arguments = $"-n {settings.CameraType.GetCameraString()} -s {settings.Resolution.GetResolutionString()} -v:f 1 -frames:v 10 {filename}";
 
-        process.StartInfo.RedirectStandardError = true;
-
-        process.Start();
-
-        process.WaitForExit();
 
         // fswebcam --delay 1 --resolution 1920x1080 --no-banner --frames 1 --jpeg 50 --device /dev/video0 test6.jpg
 
@@ -68,6 +65,39 @@ public class SnapshotRepository : ISnapshotRepository
 
     public void CreateVideo(Models.Timelapse timelapse)
     {
-        throw new NotImplementedException();
+        var settings = _settingsDbRepository.GetSettings();
+        var baseDirectory = Path.Join(settings.Path, timelapse.BaseName);
+
+        var filenameMask = Path.Join(baseDirectory, "%6d.jpg");
+        var videoFilename = Path.Join(baseDirectory, $"{timelapse.BaseName}.mp4");
+
+        if (File.Exists(videoFilename))
+        {
+            Console.WriteLine($"File {videoFilename} already exists, deleting");
+            File.Delete(videoFilename);
+        }
+
+        Console.WriteLine($"Rendering {videoFilename}");
+
+        var process = new Process();
+        process.StartInfo.FileName = "ffmpeg";
+        process.StartInfo.Arguments = $"-i {filenameMask} -c:v libx264 {videoFilename}";
+        //process.StartInfo.RedirectStandardError = true;
+        process.Start();
+        process.WaitForExit();
+
+        Console.WriteLine($"Finalized render");
+    }
+
+    public (Stream stream, string filename) GetVideo(Models.Timelapse timelapse)
+    {
+        var settings = _settingsDbRepository.GetSettings();
+        var baseDirectory = Path.Join(settings.Path, timelapse.BaseName);
+
+        var baseFilename = $"{timelapse.BaseName}.mp4";
+
+        var videoFilename = Path.Join(baseDirectory, baseFilename);
+
+        return (File.OpenRead(videoFilename), baseFilename);
     }
 }

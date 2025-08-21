@@ -26,7 +26,6 @@ services.AddSingleton<ISnapshotRepository, SnapshotRepository>();
 
 services.Configure<MongoDbConfiguration>(builder.Configuration.GetSection("mongoDbConfiguration"));
 
-
 var app = builder.Build();
 
 app.UseForwardedHeaders(new ForwardedHeadersOptions

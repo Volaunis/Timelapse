@@ -1,14 +1,29 @@
 ﻿@page "/"
 
+@using BNF.Timelapse.Models
 @using Microsoft.AspNetCore.Components.QuickGrid
 
 @rendermode InteractiveServer
 
+<script>
+    window.downloadFileFromStream = async (fileName, contentStreamReference) => {
+      const arrayBuffer = await contentStreamReference.arrayBuffer();
+      const blob = new Blob([arrayBuffer]);
+      const url = URL.createObjectURL(blob);
+      const anchorElement = document.createElement('a');
+      anchorElement.href = url;
+      anchorElement.download = fileName ?? '';
+      anchorElement.click();
+      anchorElement.remove();
+      URL.revokeObjectURL(url);
+    }
+</script>
+
 <PageTitle>Timelapses</PageTitle>
 
-<h1>Timelapses</h1>
+<h1>Timelapses - <a href="" class="btn btn-dark btn-sm" @onclick="() => ReloadPage()">Reload</a></h1>
 
-@if (_timelapses?.Any(x => x.Running) != true)
+@if (_timelapses?.Any(x => x.State != TimelapseState.AfterVideo) != true)
 {
     <p>
         @* ReSharper disable once Html.PathError *@
@@ -18,26 +33,58 @@
 
 <QuickGrid Class="table" Items="_timelapses">
     <PropertyColumn Property="timelapse => timelapse.Name"></PropertyColumn>
-    <PropertyColumn Property="timelapse => timelapse.Created" Format="yyyy-MM-dd"></PropertyColumn>
-    <PropertyColumn Property="timelapse => timelapse.Started" Format="yyyy-MM-dd"></PropertyColumn>
-    <PropertyColumn Property="timelapse => timelapse.Stopped" Format="yyyy-MM-dd"></PropertyColumn>
+    
+    <TemplateColumn Context="timelapse" Title="Times">
+        <div>Created: @timelapse.Created.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss")</div>
+        @if (timelapse.Stopped != null)
+        {
+            <div>Stopped: @timelapse.Stopped?.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss")</div>
+        }
+        @if (timelapse.Completed != null)
+        {
+            <div>Completed: @timelapse.Completed?.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss")</div>
+        }
+    </TemplateColumn>
+    
     <PropertyColumn Property="timelapse => timelapse.Index" Title="Number of images"></PropertyColumn>
+    
+    <TemplateColumn Context="timelapse" Title="State"> 
+        @switch (timelapse.State)
+        {
+            case TimelapseState.Running:
+                <div>Running</div>
+                break;
+            case TimelapseState.Paused:
+                <div>Paused</div>
+                break;
+            case TimelapseState.BeforeVideo:
+                <div>Rending video...</div>
+                break;
+            case TimelapseState.AfterVideo:
+                <div>Completed video</div>
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    </TemplateColumn>
+    <TemplateColumn Context="timelapse" Title="Actions">
+        @if (timelapse.State == TimelapseState.Running)
+        {
+            <a class="btn btn-warning btn-lg w-100" @onclick="() => PauseTimelapse(timelapse)">Pause timelapse</a>
+        }
+        else if(timelapse.State == TimelapseState.Paused)
+        {
+            <div><a class="btn btn-success btn-lg w-100" @onclick="() => ResumeTimelapse(timelapse)">Resume timelapse</a></div>
+            <div><a class="btn btn-danger btn-lg w-100" @onclick="() => StopTimelapse(timelapse)">Stop timelapse and render video</a></div>
+        }
+        else if(timelapse.State == TimelapseState.AfterVideo)
+        {
+            <div><a class="btn btn-success btn-lg w-100" @onclick="() => DownloadFileFromStream(timelapse)">Download video</a></div>
+        }
 
-    <TemplateColumn Context="timelapse">
-        @if(timelapse.Running)
-        {
-            <a class="btn btn-danger btn-sm" @onclick="() => StopTimelapse(timelapse)">Stop timelapse</a>
-        }
-        else
-        {
-            <div>Finished</div>
-        }
-        
         @if(timelapse.Index>0) 
         {
-            <div>
-                <a href="/image/@timelapse.Id">Latest snapshot</a>
-            </div>
+            <div><a class="btn btn-success btn-lg w-100" href="/image/@timelapse.Id">Latest snapshot</a></div>
         }
     </TemplateColumn>
 </QuickGrid>
