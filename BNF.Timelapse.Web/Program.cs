@@ -7,10 +7,6 @@ using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddQuickGridEntityFrameworkAdapter();
-
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -23,6 +19,8 @@ services.AddSingleton<IMongoDbService, MongoDbService>();
 services.AddSingleton<ITimelapseDbRepository, TimelapseDbRepository>();
 services.AddSingleton<ISettingsDbRepository, SettingsDbRepository>();
 services.AddSingleton<ISnapshotRepository, SnapshotRepository>();
+
+services.AddSingleton<ICameraRepository, CameraRepository>();
 
 services.Configure<MongoDbConfiguration>(builder.Configuration.GetSection("mongoDbConfiguration"));
 
