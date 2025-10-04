@@ -28,9 +28,8 @@ public class RunTimelapse : BackgroundService
 
         activeTimelapse.Index++;
 
-        _snapshotRepository.TakeSnapshot(_activeTimelapse);
-
-        _timelapseDbRepository.UpdateIndex(activeTimelapse);
+        if (_snapshotRepository.TakeSnapshot(_activeTimelapse))
+            _timelapseDbRepository.UpdateIndex(activeTimelapse);
     }
 
 

@@ -1,5 +1,4 @@
-﻿using BNF.Timelapse.Models.Extensions;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace BNF.Timelapse.Repositories.Repositories;
 
@@ -46,7 +45,12 @@ public class SnapshotRepository : ISnapshotRepository
 
         _cameraRepository.SaveImage(filename);
 
-        return File.Exists(filename);
+        var fileExists = File.Exists(filename);
+
+        if (fileExists == false)
+            Console.WriteLine("Image was not saved");
+
+        return fileExists;
 
         //var process = new Process();
         //process.StartInfo.FileName = "fswebcam";

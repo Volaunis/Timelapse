@@ -1,4 +1,5 @@
 ﻿@page "/image/{Id}"
+@page "/image"
 
 @rendermode InteractiveServer
 
@@ -21,5 +22,8 @@
 </script>
 
 <h3>Image</h3>
-
+@if (Id == null)
+{
+	<h1><a href="image" class="btn btn-dark btn-sm" @onclick="() => ReloadPage()">Reload</a></h1>
+}
 <img id="image" style="width:100%;" />

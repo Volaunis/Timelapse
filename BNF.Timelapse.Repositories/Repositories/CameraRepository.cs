@@ -54,7 +54,10 @@ public class CameraRepository : ICameraRepository
     public void SaveImage(string filename)
     {
         if (_videoCapture == null)
+        {
+            _logger.LogWarning($"Attempted to save an image without an active camera");
             return;
+        }
 
         var image = _videoCapture.RetrieveMat();
         image.SaveImage(filename);
