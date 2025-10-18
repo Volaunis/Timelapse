@@ -45,12 +45,21 @@ public class SnapshotRepository : ISnapshotRepository
 
         _cameraRepository.SaveImage(filename);
 
-        var fileExists = File.Exists(filename);
+
+        var fileInfo = new FileInfo(filename);
+
+        var fileExists = fileInfo.Exists;
 
         if (fileExists == false)
             Console.WriteLine("Image was not saved");
 
-        return fileExists;
+        var fileHasData = fileInfo.Length > 0;
+
+        if (fileHasData == false)
+            Console.WriteLine("Image file was zero-length");
+
+
+        return fileExists && fileHasData;
 
         //var process = new Process();
         //process.StartInfo.FileName = "fswebcam";
