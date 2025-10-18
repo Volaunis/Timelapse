@@ -1,6 +1,6 @@
-﻿using BNF.Timelapse.Models.Enums;
+﻿using Timelapse.Models.Enums;
 
-namespace BNF.Timelapse.Models.Extensions;
+namespace Timelapse.Models.Extensions;
 
 public static class ResolutionExtensions
 {

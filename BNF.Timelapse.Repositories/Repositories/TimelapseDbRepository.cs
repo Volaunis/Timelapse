@@ -1,9 +1,9 @@
 ﻿using System.Linq.Expressions;
-using BNF.Timelapse.Models;
-using BNF.Timelapse.Repositories.Services;
 using MongoDB.Bson;
+using Timelapse.Models;
+using Timelapse.Repositories.Services;
 
-namespace BNF.Timelapse.Repositories.Repositories;
+namespace Timelapse.Repositories.Repositories;
 
 public interface ITimelapseDbRepository
 {
@@ -73,7 +73,9 @@ public class TimelapseDbRepository : ITimelapseDbRepository
         var updateFields = new Dictionary<Expression<Func<Models.Timelapse, object>>, object>
         {
             { x => x.State, TimelapseState.BeforeVideo },
+#pragma warning disable CS8603 // Possible null reference return.
             { x => x.Stopped, DateTime.Now }
+#pragma warning restore CS8603 // Possible null reference return.
         };
 
         _mongoDbService.Update(timelapse, updateFields);
@@ -87,7 +89,9 @@ public class TimelapseDbRepository : ITimelapseDbRepository
         var updateFields = new Dictionary<Expression<Func<Models.Timelapse, object>>, object>
         {
             { x => x.State, TimelapseState.AfterVideo },
+#pragma warning disable CS8603 // Possible null reference return.
             { x => x.Completed, DateTime.Now }
+#pragma warning restore CS8603 // Possible null reference return.
         };
 
         _mongoDbService.Update(timelapse, updateFields);

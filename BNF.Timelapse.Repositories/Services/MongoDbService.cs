@@ -1,11 +1,11 @@
 ﻿using System.Linq.Expressions;
-using BNF.Timelapse.Models;
-using BNF.Timelapse.Repositories.Configuration;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using Timelapse.Models;
+using Timelapse.Repositories.Configuration;
 
-namespace BNF.Timelapse.Repositories.Services;
+namespace Timelapse.Repositories.Services;
 
 public interface IMongoDbService
 {

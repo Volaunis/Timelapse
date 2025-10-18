@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BNF.Timelapse.Models\BNF.Timelapse.Models.csproj" />
+    <ProjectReference Include="..\BNF.Timelapse.Models\Timelapse.Models.csproj" />
   </ItemGroup>
 
 </Project>

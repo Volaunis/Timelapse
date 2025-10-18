@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace BNF.Timelapse.Models;
+namespace Timelapse.Models;
 
 public class Timelapse : MongoModel
 {

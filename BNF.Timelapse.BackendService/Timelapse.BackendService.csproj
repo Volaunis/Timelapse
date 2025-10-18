@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BNF.Timelapse.Models\BNF.Timelapse.Models.csproj" />
-    <ProjectReference Include="..\BNF.Timelapse.Repositories\BNF.Timelapse.Repositories.csproj" />
+    <ProjectReference Include="..\BNF.Timelapse.Models\Timelapse.Models.csproj" />
+    <ProjectReference Include="..\BNF.Timelapse.Repositories\Timelapse.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

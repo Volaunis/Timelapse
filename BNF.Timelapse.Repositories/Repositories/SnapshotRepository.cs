@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace BNF.Timelapse.Repositories.Repositories;
+namespace Timelapse.Repositories.Repositories;
 
 public interface ISnapshotRepository
 {

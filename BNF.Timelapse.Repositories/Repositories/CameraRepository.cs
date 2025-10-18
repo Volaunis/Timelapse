@@ -1,8 +1,8 @@
-﻿using BNF.Timelapse.Models.Extensions;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using OpenCvSharp;
+using Timelapse.Models.Extensions;
 
-namespace BNF.Timelapse.Repositories.Repositories;
+namespace Timelapse.Repositories.Repositories;
 
 public interface ICameraRepository
 {

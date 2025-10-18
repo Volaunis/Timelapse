@@ -1,9 +1,9 @@
-﻿using BNF.Timelapse.Repositories.Repositories;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using MongoDB.Bson;
+using Timelapse.Repositories.Repositories;
 
-namespace BNF.Timelapse.Web.Components.Pages;
+namespace Timelapse.Web.Components.Pages;
 
 public partial class Image
 {

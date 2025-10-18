@@ -1,10 +1,10 @@
-﻿using BNF.Timelapse.Models;
-using BNF.Timelapse.Models.Extensions;
-using BNF.Timelapse.Repositories.Repositories;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using Timelapse.Models;
+using Timelapse.Models.Extensions;
+using Timelapse.Repositories.Repositories;
 
-namespace BNF.Timelapse.Web.Components.SettingsPage;
+namespace Timelapse.Web.Components.SettingsPage;
 
 public partial class UpdateSettings
 {

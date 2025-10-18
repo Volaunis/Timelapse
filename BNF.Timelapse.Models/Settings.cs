@@ -1,7 +1,7 @@
-﻿using BNF.Timelapse.Models.Enums;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using Timelapse.Models.Enums;
 
-namespace BNF.Timelapse.Models;
+namespace Timelapse.Models;
 
 [BsonIgnoreExtraElements]
 public class Settings : MongoModel

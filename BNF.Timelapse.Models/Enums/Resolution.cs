@@ -1,4 +1,4 @@
-﻿namespace BNF.Timelapse.Models.Enums;
+﻿namespace Timelapse.Models.Enums;
 
 public enum Resolution
 {

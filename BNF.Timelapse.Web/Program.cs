@@ -1,9 +1,9 @@
-using BNF.Timelapse.BackendService;
-using BNF.Timelapse.Repositories.Configuration;
-using BNF.Timelapse.Repositories.Repositories;
-using BNF.Timelapse.Repositories.Services;
-using BNF.Timelapse.Web.Components;
 using Microsoft.AspNetCore.HttpOverrides;
+using Timelapse.BackendService;
+using Timelapse.Repositories.Configuration;
+using Timelapse.Repositories.Repositories;
+using Timelapse.Repositories.Services;
+using Timelapse.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 

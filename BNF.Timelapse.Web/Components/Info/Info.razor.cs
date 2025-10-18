@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components.QuickGrid;
 
-namespace BNF.Timelapse.Web.Components.Info;
+namespace Timelapse.Web.Components.Info;
 
 public partial class Info
 {

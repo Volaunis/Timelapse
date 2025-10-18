@@ -1,7 +1,7 @@
-﻿using BNF.Timelapse.Models;
-using BNF.Timelapse.Repositories.Services;
+﻿using Timelapse.Models;
+using Timelapse.Repositories.Services;
 
-namespace BNF.Timelapse.Repositories.Repositories;
+namespace Timelapse.Repositories.Repositories;
 
 public interface ISettingsDbRepository
 {

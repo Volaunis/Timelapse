@@ -1,4 +1,4 @@
-﻿namespace BNF.Timelapse.Models;
+﻿namespace Timelapse.Models;
 
 public enum TimelapseState
 {

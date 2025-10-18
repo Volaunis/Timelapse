@@ -12,12 +12,6 @@
     <!--<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />-->
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\BNF.Timelapse.BackendService\BNF.Timelapse.BackendService.csproj" />
-    <ProjectReference Include="..\BNF.Timelapse.Models\BNF.Timelapse.Models.csproj" />
-    <ProjectReference Include="..\BNF.Timelapse.Repositories\BNF.Timelapse.Repositories.csproj" />
-  </ItemGroup>
-
 	<ItemGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64'">
 	  <None Update="OpenCV.Native\Ubuntu24.04\libOpenCvSharpExtern.so">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -30,6 +24,12 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 			<TargetPath>%(Filename)%(Extension)</TargetPath>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\BNF.Timelapse.BackendService\Timelapse.BackendService.csproj" />
+	  <ProjectReference Include="..\BNF.Timelapse.Models\Timelapse.Models.csproj" />
+	  <ProjectReference Include="..\BNF.Timelapse.Repositories\Timelapse.Repositories.csproj" />
 	</ItemGroup>
 
 </Project>

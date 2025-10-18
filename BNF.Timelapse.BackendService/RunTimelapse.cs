@@ -1,7 +1,7 @@
-﻿using BNF.Timelapse.Repositories.Repositories;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Hosting;
+using Timelapse.Repositories.Repositories;
 
-namespace BNF.Timelapse.BackendService;
+namespace Timelapse.BackendService;
 
 public class RunTimelapse : BackgroundService
 {
@@ -9,7 +9,7 @@ public class RunTimelapse : BackgroundService
     private readonly ISnapshotRepository _snapshotRepository;
     private readonly Timer _timer;
     private bool _timerActive;
-    private Models.Timelapse? _activeTimelapse;
+    private global::Timelapse.Models.Timelapse? _activeTimelapse;
 
 
     public RunTimelapse(ITimelapseDbRepository timelapseDbRepository, ISnapshotRepository snapshotRepository)

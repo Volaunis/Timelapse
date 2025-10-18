@@ -1,4 +1,4 @@
-﻿namespace BNF.Timelapse.Repositories.Configuration;
+﻿namespace Timelapse.Repositories.Configuration;
 
 public class MongoDbConfiguration
 {

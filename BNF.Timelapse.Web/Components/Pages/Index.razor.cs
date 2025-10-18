@@ -1,8 +1,8 @@
-﻿using BNF.Timelapse.Repositories.Repositories;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using Timelapse.Repositories.Repositories;
 
-namespace BNF.Timelapse.Web.Components.Pages;
+namespace Timelapse.Web.Components.Pages;
 
 public partial class Index
 {
