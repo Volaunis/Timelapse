@@ -27,9 +27,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\BNF.Timelapse.BackendService\Timelapse.BackendService.csproj" />
-	  <ProjectReference Include="..\BNF.Timelapse.Models\Timelapse.Models.csproj" />
-	  <ProjectReference Include="..\BNF.Timelapse.Repositories\Timelapse.Repositories.csproj" />
+	  <ProjectReference Include="..\Timelapse.BackendService\Timelapse.BackendService.csproj" />
+	  <ProjectReference Include="..\Timelapse.Models\Timelapse.Models.csproj" />
+	  <ProjectReference Include="..\Timelapse.Repositories\Timelapse.Repositories.csproj" />
 	</ItemGroup>
 
 </Project>

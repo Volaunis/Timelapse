@@ -3,14 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
 VisualStudioVersion = 18.0.11111.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timelapse.Models", "BNF.Timelapse.Models\Timelapse.Models.csproj", "{4C9390A6-C0F8-CABB-0A6C-16C5D4DB758B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timelapse.Repositories", "BNF.Timelapse.Repositories\Timelapse.Repositories.csproj", "{4F8FDF9C-6796-A469-1D3E-B482D0C36ACF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timelapse.BackendService", "BNF.Timelapse.BackendService\Timelapse.BackendService.csproj", "{72493F6E-F43D-80C7-A936-CB95ECEA46ED}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timelapse.Web", "BNF.Timelapse.Web\Timelapse.Web.csproj", "{5D67C1BB-3851-BFD6-1039-9FC4E6511354}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{92105EFE-5907-4106-AA7E-1D0219CFD06B}"
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
@@ -22,28 +14,36 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{2771
 		Scripts\build-opencv-native.sh = Scripts\build-opencv-native.sh
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timelapse.Models", "Timelapse.Models\Timelapse.Models.csproj", "{9E78EC44-797E-ED8B-4663-F56D8157F8DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timelapse.Repositories", "Timelapse.Repositories\Timelapse.Repositories.csproj", "{201B0B5D-0166-12C8-9B39-AF93F2FAD54E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timelapse.BackendService", "Timelapse.BackendService\Timelapse.BackendService.csproj", "{DDB452E7-B476-1730-A6E8-D96520973275}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timelapse.Web", "Timelapse.Web\Timelapse.Web.csproj", "{BE25FE2A-D045-3DD6-0D50-8CC39C9F6FA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4C9390A6-C0F8-CABB-0A6C-16C5D4DB758B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C9390A6-C0F8-CABB-0A6C-16C5D4DB758B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C9390A6-C0F8-CABB-0A6C-16C5D4DB758B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C9390A6-C0F8-CABB-0A6C-16C5D4DB758B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4F8FDF9C-6796-A469-1D3E-B482D0C36ACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F8FDF9C-6796-A469-1D3E-B482D0C36ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F8FDF9C-6796-A469-1D3E-B482D0C36ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F8FDF9C-6796-A469-1D3E-B482D0C36ACF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{72493F6E-F43D-80C7-A936-CB95ECEA46ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{72493F6E-F43D-80C7-A936-CB95ECEA46ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{72493F6E-F43D-80C7-A936-CB95ECEA46ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{72493F6E-F43D-80C7-A936-CB95ECEA46ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D67C1BB-3851-BFD6-1039-9FC4E6511354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D67C1BB-3851-BFD6-1039-9FC4E6511354}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D67C1BB-3851-BFD6-1039-9FC4E6511354}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D67C1BB-3851-BFD6-1039-9FC4E6511354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E78EC44-797E-ED8B-4663-F56D8157F8DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E78EC44-797E-ED8B-4663-F56D8157F8DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E78EC44-797E-ED8B-4663-F56D8157F8DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E78EC44-797E-ED8B-4663-F56D8157F8DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{201B0B5D-0166-12C8-9B39-AF93F2FAD54E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{201B0B5D-0166-12C8-9B39-AF93F2FAD54E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{201B0B5D-0166-12C8-9B39-AF93F2FAD54E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{201B0B5D-0166-12C8-9B39-AF93F2FAD54E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDB452E7-B476-1730-A6E8-D96520973275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDB452E7-B476-1730-A6E8-D96520973275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDB452E7-B476-1730-A6E8-D96520973275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDB452E7-B476-1730-A6E8-D96520973275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE25FE2A-D045-3DD6-0D50-8CC39C9F6FA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE25FE2A-D045-3DD6-0D50-8CC39C9F6FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE25FE2A-D045-3DD6-0D50-8CC39C9F6FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE25FE2A-D045-3DD6-0D50-8CC39C9F6FA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
