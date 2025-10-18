@@ -12,21 +12,7 @@
     <!--<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />-->
   </ItemGroup>
 
-	<ItemGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64'">
-	  <None Update="OpenCV.Native\Ubuntu24.04\libOpenCvSharpExtern.so">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		  <TargetPath>%(Filename)%(Extension)</TargetPath>
-	  </None>
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(RuntimeIdentifier)' == 'linux-arm64'">
-		<None Update="OpenCV.Native\ARM\libOpenCvSharpExtern.so">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<TargetPath>%(Filename)%(Extension)</TargetPath>
-		</None>
-	</ItemGroup>
-
-	<ItemGroup>
+  <ItemGroup>
 	  <ProjectReference Include="..\Timelapse.BackendService\Timelapse.BackendService.csproj" />
 	  <ProjectReference Include="..\Timelapse.Models\Timelapse.Models.csproj" />
 	  <ProjectReference Include="..\Timelapse.Repositories\Timelapse.Repositories.csproj" />
