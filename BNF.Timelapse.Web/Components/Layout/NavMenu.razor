@@ -1,8 +1,9 @@
-﻿@rendermode InteractiveServer
+﻿@using System.Globalization
+@rendermode InteractiveServer
 
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">BNF Timelapses</a>
+	    <a class="navbar-brand" href="">BNF Timelapses <br/>@DateTime.Now.ToString("yyyy-MM-dd HH:mm",new CultureInfo("da-DK"))</a>
     </div>
 </div>
 
