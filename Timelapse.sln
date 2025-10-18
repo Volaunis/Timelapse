@@ -11,6 +11,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timelapse.BackendService", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timelapse.Web", "BNF.Timelapse.Web\Timelapse.Web.csproj", "{5D67C1BB-3851-BFD6-1039-9FC4E6511354}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{92105EFE-5907-4106-AA7E-1D0219CFD06B}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{2771F772-540A-4F11-BAAF-F6D3F2D60B91}"
+	ProjectSection(SolutionItems) = preProject
+		Scripts\build-opencv-native.sh = Scripts\build-opencv-native.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +47,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2771F772-540A-4F11-BAAF-F6D3F2D60B91} = {92105EFE-5907-4106-AA7E-1D0219CFD06B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8D9ED3F4-C3A9-491F-A631-9F6E14E4C987}
