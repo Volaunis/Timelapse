@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components.QuickGrid;
+﻿using JetBrains.Annotations;
+using Microsoft.AspNetCore.Components.QuickGrid;
 
 namespace Timelapse.Web.Components.Info;
 
@@ -7,6 +8,7 @@ public partial class Info
     private class DriveListInfo
     {
         public required string Drive { get; set; }
+
         public required string FreeSpace { get; set; }
     }
 

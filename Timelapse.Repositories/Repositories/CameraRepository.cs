@@ -40,7 +40,7 @@ public class CameraRepository : ICameraRepository
             _videoCapture.Set(VideoCaptureProperties.FrameWidth, width);
             _videoCapture.Set(VideoCaptureProperties.FrameHeight, height);
 
-            _videoCapture.Grab();
+            //_videoCapture.Grab();
 
             _videoCapture.RetrieveMat();
         }
